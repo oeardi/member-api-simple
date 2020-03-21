@@ -1,0 +1,32 @@
+# 设置服务端口
+server:
+  port: 1111
+  servlet:
+    context-path: /member
+
+# Spring 及 DB 相关配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mm?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: 654321
+
+# MyBatis 配置
+mybatis:
+  ### 设置 mybatis 配置文件的文件名
+  configuration-properties: mybatis-config.xml
+  ### 设置扫描 mapper.xml 文件的路径
+  mapper-locations: /mapper/*.xml
+  ### 配置实体类的扫描路径（entity 包路径）
+  type-aliases-package: com.member.entity
+  configuration:
+    use-generated-keys: true
+    use-column-label: true
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    ./src/main/resources/mapper: debug
+
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace = dao 层接口类 -->
+<mapper namespace="com.member.dao.MemberInfoDao">
+
+    <insert id="insertMemberInfo" useGeneratedKeys="true" keyColumn="member_id" keyProperty="memberId"
+            parameterType="com.member.entity.MemberInfo">
+        INSERT INTO
+        t_member_info (
+        member_name, member_type, password, age, sex,
+        mobile_phone, action_flag, app_id, mid, is_real,
+        status, business_id, comment, create_time, update_time)
+        VALUES (
+        #{memberName}, 0, #{password}, #{age}, #{sex},
+        #{mobilePhone}, 1, #{appId}, #{mid}, 0,
+        0, #{businessId}, #{comment}, NOW(), NOW())
+    </insert>
+
+    <delete id="deleteMemberInfoByMemberId" parameterType="Integer">
+        DELETE
+        FROM
+        t_member_info
+        WHERE
+        member_id = #{memberId}
+    </delete>
+
+    <update id="updateMemberInfoByMemberId" parameterType="com.member.entity.MemberInfo">
+        UPDATE
+        t_member_info
+        <set>
+            <if test="memberName != null">member_name = #{memberName},</if>
+            <if test="memberType != null">member_type = #{memberType},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="mobilePhone != null">mobile_phone = #{mobilePhone},</if>
+            <if test="actionFlag != null">action_flag = #{actionFlag},</if>
+            <if test="appId != null">app_id = #{appId},</if>
+            <if test="mid != null">mid = #{mid},</if>
+            <if test="isReal != null">is_real = #{isReal},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="businessId != null">business_id = #{businessId},</if>
+            <if test="comment != null">comment = #{comment},</if>
+            update_time = NOW()
+        </set>
+        WHERE
+        member_id = #{memberId}
+    </update>
+
+    <update id="updateStatusByMemberId" parameterType="Integer">
+        UPDATE
+        t_member_info
+        <set>
+            <if test="status != null">status = #{status},</if>
+            update_time = NOW()
+        </set>
+        WHERE
+        member_id = #{memberId}
+    </update>
+
+    <select id="selectMemberInfoByMemberId" parameterType="Integer" resultType="com.member.entity.MemberInfo">
+        SELECT
+        member_name, member_type, age, sex, mobile_phone,
+        app_id, mid, is_real, status, business_id
+        FROM
+        t_member_info
+        WHERE
+        member_id = #{memberId}
+    </select>
+
+
+    <select id="selectMemberInfoByAnyField" parameterType="com.member.entity.MemberInfo"
+            resultType="com.member.entity.MemberInfo">
+        SELECT
+        member_id, member_name, member_type, age, sex,
+        mobile_phone, action_flag, app_id, mid, is_real,
+        status, business_id, creat_time, update_time
+        FROM
+        t_member_info
+        <where>
+            <if test="memberId != null">AND member_id = #{memberId}</if>
+            <if test="memberName != null">AND member_name = #{memberName}</if>
+            <if test="memberType != null">AND member_type = #{memberType}</if>
+            <if test="age != null">AND age = #{age}</if>
+            <if test="sex != null">AND sex = #{sex}</if>
+            <if test="mobilePhone != null">AND mobile_phone = #{mobilePhone}</if>
+            <if test="actionFlag != null">AND action_flag = #{actionFlag}</if>
+            <if test="appId != null">AND app_id = #{appId}</if>
+            <if test="mid != null">AND mid = #{mid}</if>
+            <if test="isReal != null">AND is_real = #{isReal}</if>
+            <if test="status != null">AND status = #{status}</if>
+            <if test="businessId != null">AND business_id = #{businessId}</if>
+            <if test="createTime != null">AND create_time = #{createTime}</if>
+            <if test="updateTime != null">AND update_time = #{updateTime}</if>
+        </where>
+    </select>
+
+    <select id="selectCountMemberInfoByMobilePhone" parameterType="String" resultType="Integer">
+        SELECT
+        COUNT(1)
+        FROM
+        t_member_info
+        <where>
+            <if test="mobilePhone != null and mobilePhone != ''">AND mobile_phone = #{mobilePhone}</if>
+        </where>
+    </select>
+
+    <select id="selectStatusByMemberId" parameterType="Integer" resultType="Integer">
+        SELECT
+        status
+        FROM
+        t_member_info
+        WHERE
+        member_id = #{memberId}
+    </select>
+
+</mapper>
