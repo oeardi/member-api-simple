@@ -1,13 +1,13 @@
 package com;
 
-import com.member.sonar.base.Base;
+import com.member.sonar.base.Base6;
 import org.testng.annotations.Test;
 
-public class BaseTest {
+public class BTest {
 
     @Test
     public void baseTest() {
-        Base base = new Base();
+        Base6 base = new Base6();
         String result = base.getString();
         System.out.println("[Test Case] result = " + result);
     }

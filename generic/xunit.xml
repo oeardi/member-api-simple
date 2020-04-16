@@ -1,0 +1,5 @@
+<testExecutions version="1">
+    <file path="src/test/java/com/BTest.java">
+        <testCase name="baseTest" duration="500"/>
+    </file>
+</testExecutions>

@@ -2,4 +2,9 @@
 
 用于为团队成功培训接口测试，并用于练习。
 
+soanr:
+mvn clean sonar:sonar -Dsonar.coverageReportPaths=generic\coverage.xml -Dsonar.testExecutionReportPaths=generic
+\xunit.xml -Dsonar.java.binaries=target
+
+
 
