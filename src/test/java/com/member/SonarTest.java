@@ -11,6 +11,7 @@ public class SonarTest {
     @Test
     public void sonarTest() {
         Service service = new Service();
+
         String result = service.getString();
         System.out.println("[Test Case] result = " + result);
     }
