@@ -40,7 +40,7 @@ public class FindMemberInfo {
     @ApiOperation(value = "查询会员接口（selectOne）- 根据 memberId 查询 - mapper 使用 findMemberInfoByMemberId", httpMethod = "POST")
     @RequestMapping(value = "/findMemberInfoByMemberId", method = RequestMethod.POST)
     @ResponseBody
-    public Object findMemberInfoByMemberId(@RequestParam String memberId) {
+    public Object findMemberInfoByMemberId(@RequestParam Integer memberId) {
 
         MemberInfo memberInfo = sqlSessionTemplate.selectOne("selectMemberInfoByMemberId", memberId);
 
