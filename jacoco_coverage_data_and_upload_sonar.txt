@@ -1,0 +1,26 @@
+运行 jacoco 的命令：
+// 正常生成 target/jacoco.exec 和 target/site/jacoco/jacoco.xml 文件，
+// 且在 sonar 平台显示代码覆盖率数据。
+mvn clean jacoco:prepare-agent package jacoco:report sonar:sonar
+mvn clean package jacoco:prepare-agent jacoco:report sonar:sonar
+
+
+// 去掉了sonar-maven-plugin，正常生成一切文件和覆盖率数据
+// 不在 sonar 平台配置 JaCoCo - target/site/jacoco/jacoco.xml，正常生成一切文件和覆盖率数据
+// 将 profiles 节点的 plugin 相关内容，移动到 plugins 节点内，正常生成一切文件和覆盖率数据
+
+
+// 生成 target/jacoco.exec 文件
+// 不会生成 target/site/jacoco/jacoco.xml 文件
+// 不会在 sonar 平台显示覆盖率数据
+mvn clean package sonar:sonar
+mvn clean package jacoco:prepare-agent
+mvn clean package jacoco:report
+mvn clean test
+
+
+// 添加了 surefire 插件就不会生成 target/site/jacoco/jacoco.xml 文件，不会在 sonar 平台显示覆盖率数据
+
+
+
+
