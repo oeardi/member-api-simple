@@ -5,11 +5,10 @@ import lombok.Data;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
 /**
- * @author 冷枫红舞
+ * @author Administrator
  */
 @Data
-public class Base4 {
-
+public class SonarBase1 {
     public String getString() {
         String string = randomNumeric(2);
         return string;

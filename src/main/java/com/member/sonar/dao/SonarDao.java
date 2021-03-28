@@ -1,14 +1,14 @@
 package com.member.sonar.dao;
 
-import com.member.sonar.base.Base;
+import com.member.sonar.base.SonarBase;
 
 /**
  * @author 冷枫红舞
  */
-public class Dao {
+public class SonarDao {
 
     public String getString() {
-        Base base = new Base();
+        SonarBase base = new SonarBase();
         int num = Integer.valueOf(base.getString());
 
         int _n = 50;

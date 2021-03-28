@@ -1,16 +1,15 @@
-package com;
+package com.member.sonar.dao;
 
-import com.member.sonar.dao.Dao;
 import org.testng.annotations.Test;
 
 /**
  * @author 冷枫红舞
  */
-public class DaoTest {
+public class SonarDaoTest {
 
     @Test
-    public void daoTest(){
-        Dao dao = new Dao();
+    public void sonardao(){
+        SonarDao dao = new SonarDao();
         String result = dao.getString();
         System.out.println("[Test Case] result = " + result);
     }

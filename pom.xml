@@ -177,6 +177,18 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
+                <configuration>
+                    <includes>
+                        <include>com/member/dao/*</include>
+                        <include>com/member/sonar/**</include>
+                    </includes>
+                    <excludes>
+                        <exclude>com/member/config/**</exclude>
+                        <exclude>com/member/entity/**</exclude>
+                        <exclude>com/member/enums/**</exclude>
+                        <exclude>com/member/utils/**</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
