@@ -179,7 +179,8 @@
                 <version>0.8.6</version>
                 <configuration>
                     <includes>
-                        <include>com/member/dao/*</include>
+                        <!-- 层接口的实现在 xml 中，所以 jacoco 不会对 dao 层生成覆盖率数据。 -->
+                        <!-- <include>com/member/dao/*</include>-->
                         <include>com/member/sonar/**</include>
                     </includes>
                     <excludes>
